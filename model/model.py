@@ -4,8 +4,8 @@ from keras.api.layers import Conv2D, MaxPooling2D, Normalization, Rescaling
 from keras.api.layers import Dense, Flatten, Dropout
 from keras.api.losses import SparseCategoricalCrossentropy
 
-def make_model():
 
+def make_model():
     model = Sequential([
 
         Rescaling(1. / 255),
