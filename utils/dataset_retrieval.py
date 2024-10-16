@@ -46,6 +46,7 @@ def get_testing_dataset(directory_path: str) -> (tf.data.Dataset, list[str]):
     _, _, file_names = list(os.walk(directory_path))[0]
 
     dataset = keras.utils.image_dataset_from_directory(directory_path, labels=None, image_size=(224, 224),
-                                                       shuffle=False, batch_size=1)
+                                                       shuffle=False, batch_size=1,  # color_mode="grayscale",
+                                                       )
 
     return dataset, file_names

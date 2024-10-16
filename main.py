@@ -16,7 +16,7 @@ train_dataset, validation_dataset = get_training_dataset("train", "train.csv")
 train_dataset = configure_for_performance(train_dataset)
 validation_dataset = configure_for_performance(validation_dataset)
 
-IS_LEARNING = False
+IS_LEARNING = True
 
 if IS_LEARNING:
     model = make_model()
