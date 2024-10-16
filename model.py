@@ -5,9 +5,6 @@ from keras.api.layers import Dense, Flatten, Dropout
 from keras.api.losses import SparseCategoricalCrossentropy
 
 def make_model():
-    layer = Normalization()
-
-    layer.adapt(np.array([0.485, 0.456, 0.406],dtype='float32'))
 
     model = Sequential([
 

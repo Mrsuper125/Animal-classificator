@@ -15,9 +15,9 @@ gpus = tf.config.list_physical_devices('GPU')
 
 train_dataset, validation_dataset = get_dataset("train", "train.csv")
 
-print(train_dataset)
-
 batch_size = 32
+
+"""
 
 image_batch, label_batch = next(iter(train_dataset))
 
@@ -30,10 +30,19 @@ for i in range(9):
 plt.plot()
 plt.show()
 
+"""
+AUTOTUNE = tf.data.AUTOTUNE
+
+def configure_for_performance(ds):
+  ds = ds.cache()
+  ds = ds.shuffle(buffer_size=1000)
+  ds = ds.prefetch(buffer_size=AUTOTUNE)
+  return ds
+
+train_dataset = configure_for_performance(train_dataset)
+validation_dataset = configure_for_performance(validation_dataset)
 
 model = make_model()
-
-num_classes = 10
 
 model.fit(
     train_dataset,
