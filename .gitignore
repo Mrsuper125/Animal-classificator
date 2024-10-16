@@ -1,3 +1,5 @@
 /test/
 /train/
 /.idea/workspace.xml
+/saved_model
+/result
