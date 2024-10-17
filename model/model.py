@@ -6,7 +6,16 @@ from keras.api.losses import SparseCategoricalCrossentropy
 import keras
 
 
+from keras.api.applications.resnet50 import ResNet50
+from keras.api.models import Model
+
+
 def make_model():
+    model = ResNet50(
+        weights=None,
+        classes=10,
+        classifier_activation="softmax", )
+
     """model = Sequential([
         Rescaling(1. / 255),
 
@@ -47,13 +56,29 @@ def make_model():
 
     ])
 """
-    model = keras.applications.VGG19(
+    """model = keras.applications.VGG19(
         include_top=True,
         weights=None,
         classes=10,
         classifier_activation="softmax",
         name="vgg19",
-    )
+    )"""
+
+    """
+    model = Sequential([
+
+        Rescaling(1. / 255),
+        Conv2D(16, 3, padding='same', activation='relu'),
+        MaxPooling2D(),
+        Conv2D(32, 3, padding='same', activation='relu'),
+        MaxPooling2D(),
+        Conv2D(64, 3, padding='same', activation='relu'),
+        MaxPooling2D(),
+        Flatten(),
+        Dense(128, activation='relu'),
+        Dense(10)
+    ])
+    """
 
     model.compile(
         optimizer='adam',

@@ -24,7 +24,7 @@ if IS_LEARNING:
     model.fit(
         train_dataset,
         validation_data=validation_dataset,
-        epochs=15
+        epochs=25
     )
 
     model.save("saved_model/saved_model.keras")
